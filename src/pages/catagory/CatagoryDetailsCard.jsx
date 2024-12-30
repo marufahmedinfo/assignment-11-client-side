@@ -17,7 +17,6 @@ const CatagoryDetailsCard = ({ item }) => {
             price,
             image,
             review,
-            email,
             Bookemail: user?.email
         };
         axios.post('https://assignment-11-server-kappa-inky.vercel.app/bookTutor', bookInfo)
