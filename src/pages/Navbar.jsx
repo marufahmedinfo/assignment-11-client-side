@@ -100,7 +100,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-end z-[1]">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar  hover:bg-gradient-to-r from-blue-200 to-purple-300">
                   <div className="tooltip tooltip-left" data-tip={user?.displayName}>
-                    <img src={user?.photoURL} className="h-20 w-16 rounded-full object-cover" alt="" />
+                    <img referrerPolicy='no-referrer' src={user?.photoURL} className="h-20 w-16 rounded-full object-cover" alt="" />
                   </div>
                 </div>
                 <ul
