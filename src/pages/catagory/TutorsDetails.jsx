@@ -16,8 +16,7 @@ const TutorsDetails = () => {
       price,
       image,
       review,
-      email,
-      Bookemail: user?.email
+      email: user?.email
     };
     axios.post('https://assignment-11-server-kappa-inky.vercel.app/bookTutor', bookInfo)
       .then(res => {
