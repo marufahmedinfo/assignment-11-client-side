@@ -6,66 +6,64 @@ import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
-      const { user, handleLogOut } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+  const { user, handleLogOut } = useContext(AuthContext);
 
-      const [myBooked, setMyBooked] = useState([]);
+  const [myBooked, setMyBooked] = useState([]);
 
-      useEffect(() => {
-          fetch(`https://assignment-11-server-kappa-inky.vercel.app/bookTutor/${user?.email}`)
-              .then(res => res.json())
-              .then(data => {
-                  // console.log(data)
-                  setMyBooked(data)
-              })
-      }, []);
+  useEffect(() => {
+    fetch(`https://assignment-11-server-kappa-inky.vercel.app/bookTutor/${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data)
+        setMyBooked(data)
+      })
+  }, []);
 
-    const navbar = <>
-        <li className=''><NavLink className={({ isActive }) =>
-            `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/'}>Home</NavLink></li>
-        <li className=''><NavLink className={({ isActive }) =>
-            `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/find_tutors'}>Find tutors</NavLink></li>
-        <li className=''><NavLink className={({ isActive }) =>
-            `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/Add_Tutorials'}>Add Tutorials</NavLink></li>
-        <li className=''><NavLink className={({ isActive }) =>
-            `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/My_Tutorials'}>My Tutorials</NavLink></li>
-        <li className=''><NavLink className={({ isActive }) =>
-            `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/My_booked_tutors'}>My booked tutors</NavLink></li>
-    </>
+  const navbar = <>
+    <li className=''><NavLink className={({ isActive }) =>
+      `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/'}>Home</NavLink></li>
+    <li className=''><NavLink className={({ isActive }) =>
+      `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/find_tutors'}>Find tutors</NavLink></li>
+    <li className=''><NavLink className={({ isActive }) =>
+      `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/Add_Tutorials'}>Add Tutorials</NavLink></li>
+    <li className=''><NavLink className={({ isActive }) =>
+      `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/My_Tutorials'}>My Tutorials</NavLink></li>
+    <li className=''><NavLink className={({ isActive }) =>
+      `py-3 rounded-2xl ${isActive ? 'underline hover:font-bold font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300' : 'hover:underline hover:text-blue-950 hover:font-bold'}`} to={'/My_booked_tutors'}>My booked tutors</NavLink></li>
+  </>
 
-    return (
+  return (
 
-        <nav className="px-6 flex justify-between items-center sticky top-0 backdrop-blur-lg z-[1]">
-            <div className='md:block hidden'>
-                <div className='flex items-center'>
-                    <Link to={'/'}>
-                        <img src={LogoImg} alt="language exchanges logo" className="h-14" />
-                    </Link>
-                    <Link to={'/'}>
-                        <h1 className='text-2xl font-bold lg:block md:hidden md:ml-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300'>Language Exchange</h1>
-                    </Link>
-                </div>
-            </div>
-            <div>
-                <div tabIndex={0} role="button" className="md:hidden" onClick={() => setOpen(!open)}>
-                    {
-                        open === true ? <FaWindowClose className="text-3xl" /> : <IoMdMenu className="text-3xl" />
-                    }
+    <nav className="px-6 flex justify-between items-center sticky top-0 backdrop-blur-lg z-[1]">
+      <div className='md:block hidden'>
+        <div className='flex items-center'>
+          <Link to={'/'}>
+            <img src={LogoImg} alt="language exchanges logo" className="h-14" />
+          </Link>
+          <Link to={'/'}>
+            <h1 className='text-2xl font-bold lg:block md:hidden md:ml-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300'>Language Exchange</h1>
+          </Link>
+        </div>
+      </div>
+      <div>
+        <div tabIndex={0} role="button" className="md:hidden" onClick={() => setOpen(!open)}>
+          {
+            open === true ? <FaWindowClose className="text-3xl" /> : <IoMdMenu className="text-3xl" />
+          }
 
 
-                </div>
-                <ul tabIndex={0} className={`md:flex gap-7 absolute duration-1000 md:static
+        </div>
+        <ul tabIndex={0} className={`md:flex gap-7 absolute duration-1000 md:static
             ${open ? "top-7 left-14" : "-top-40 left-14"} px-6`}>
 
-                    {navbar}
+          {navbar}
 
-                </ul>
-            </div>
-            <div>
+        </ul>
+      </div>
+      <div className='flex items-center'>
 
-
-
-                {
+        {
           user && user?.email ?
 
 
@@ -102,7 +100,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-end z-[1]">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar  hover:bg-gradient-to-r from-blue-200 to-purple-300">
                   <div className="tooltip tooltip-left" data-tip={user?.displayName}>
-                      <img src={user?.photoURL} className="h-20 w-16 rounded-full object-cover" alt="" />
+                    <img src={user?.photoURL} className="h-20 w-16 rounded-full object-cover" alt="" />
                   </div>
                 </div>
                 <ul
@@ -123,18 +121,18 @@ const Navbar = () => {
 
 
 
-           <div className='flex gap-5'>
+            <div className='flex gap-5'>
               <Link to={'/register'}><button className='btn bg-gradient-to-r from-purple-400 to-blue-300 text-white'>Register</button></Link>
               <Link to={'/login'}><button className='btn bg-gradient-to-r from-blue-300 to-purple-400 text-white'>Login</button></Link>
 
             </div>
         }
 
-            </div>
-        </nav>
+      </div>
+    </nav>
 
 
-    );
+  );
 };
 
 export default Navbar;
